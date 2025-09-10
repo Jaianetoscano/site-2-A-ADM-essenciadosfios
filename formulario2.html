@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>formulario essência dos fios</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="menu">☰</div>
+    <div class="logo-container">
+      <a href="./index.html">
+        <img src="./img/logo2.jpeg" alt="logo essência dos fios" class="logo" />
+      </a>
+      <div class="brand-name">essência dos fios</div>
+    </div>
+    <div class="cart">🛒<span>0</span></div>
+  </header>
+
+  <div class="quiz-question">
+    <h3>quanto à oleosidade, como seu cabelo é?</h3>
+    <div class="quiz-options">
+      <label><input type="radio" name="oleo" /> oleoso</label>
+      <label><input type="radio" name="oleo" /> raiz oleosa, pontas secas</label>
+      <label><input type="radio" name="oleo" /> normal</label>
+      <label><input type="radio" name="oleo" /> seco</label>
+    </div>
+  </div>
+
+  <div class="quiz-question">
+    <h3>quantas vezes na semana você lava seu cabelo? 🧴</h3>
+    <div class="quiz-options">
+      <label><input type="radio" name="lavagem" /> 1</label>
+      <label><input type="radio" name="lavagem" /> 2</label>
+      <label><input type="radio" name="lavagem" /> 3</label>
+      <label><input type="radio" name="lavagem" /> 4</label>
+      <label><input type="radio" name="lavagem" /> 5</label>
+      <label><input type="radio" name="lavagem" /> 6</label>
+      <label><input type="radio" name="lavagem" /> 7</label>
+    </div>
+  </div>
+
+  <div class="quiz-question">
+    <h3>como é o seu tipo de cabelo?</h3>
+    <div class="quiz-options" id="tipo-cabelo-options">
+      <label><input type="radio" name="tipo-cabelo" value="liso" /> liso</label>
+      <label><input type="radio" name="tipo-cabelo" value="ondulado" /> ondulado</label>
+      <label><input type="radio" name="tipo-cabelo" value="cacheado" /> cacheado</label>
+      <label><input type="radio" name="tipo-cabelo" value="crespo" /> crespo</label>
+    </div>
+  </div>
+
+  <button class="button" onclick="mostrarImagem()" style="margin-top: 3rem; margin-left: -2rem;">enviar</button>
+
+  <div id="resultado" style="margin-top:2rem;">
+    <img id="imagem-resultado" src="" alt="" style="display:none; width: 100%; max-width: 400px; margin: 2rem auto; display: block; border-radius: 8px;" />
+    <div style="text-align: center;">
+      <br>
+      <a href="finalizador-de-compra.html" id="botao-personalizado" class="button" style="display: none; margin-top: 1.5rem;">
+        COMPRAR
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function mostrarImagem() {
+      const tipos = document.getElementsByName('tipo-cabelo');
+      let tipoSelecionado = '';
+
+      for (let tipo of tipos) {
+        if (tipo.checked) {
+          tipoSelecionado = tipo.value;
+          break;
+        }
+      }
+
+      const imagem = document.getElementById('imagem-resultado');
+      const botaoPersonalizado = document.getElementById('botao-personalizado');
+
+      if (tipoSelecionado) {
+        let caminhoImagem = '';
+
+        switch (tipoSelecionado) {
+          case 'liso':
+            caminhoImagem = './img/condicionador-dois-boosters.jpeg';
+            break;
+          case 'ondulado':
+            caminhoImagem = './img/condicionador-dois-boosters.jpeg';
+            break;
+          case 'cacheado':
+            caminhoImagem = './img/condicionador-dois-boosters.jpeg';
+            break;
+          case 'crespo':
+            caminhoImagem = './img/condicionador-dois-boosters.jpeg';
+            break;
+          default:
+            caminhoImagem = '';
+        }
+
+        imagem.src = caminhoImagem;
+        imagem.style.display = 'block';
+        imagem.alt = 'imagem de cabelo ' + tipoSelecionado;
+        botaoPersonalizado.style.display = 'inline-block';
+      } else {
+        imagem.style.display = 'none';
+        botaoPersonalizado.style.display = 'none';
+        alert('por favor, selecione um tipo de cabelo.');
+      }
+    }
+  </script>
+
+</body>
+</html>
